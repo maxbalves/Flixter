@@ -6,8 +6,10 @@
 //
 
 #import "MovieViewController.h"
+#import "movieViewCell.h"
+#import "UIImageView+AFNetworking.h"
 
-@interface MovieViewController () <UITableViewDataSource>
+@interface MovieViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *moviesArray;
 
@@ -17,14 +19,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.moviesArray = @[@"New York, NY", @"Los Angeles, CA", @"Chicago, IL", @"Houston, TX",
-                 @"Philadelphia, PA", @"Phoenix, AZ", @"San Diego, CA", @"San Antonio, TX",
-                 @"Dallas, TX", @"Detroit, MI", @"San Jose, CA", @"Indianapolis, IN",
-                 @"Jacksonville, FL", @"San Francisco, CA", @"Columbus, OH", @"Austin, TX",
-                 @"Memphis, TN", @"Baltimore, MD", @"Charlotte, ND", @"Fort Worth, TX"];
-    self.tableView.dataSource = self;
     
-    // Do any additional setup after loading the view.
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=9017031209ee56001d137e43569ed1cf"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
@@ -43,15 +41,22 @@
                // TODO: Store the movies in a property to use elsewhere
                
                // TODO: Reload your table view data
-               self.tableView.dataSource = self;
+               [self.tableView reloadData];
            }
        }];
     [task resume];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    cell.textLabel.text = self.moviesArray[indexPath.row];
+- (movieViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    movieViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"movieViewCell" forIndexPath:indexPath];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", @"https://image.tmdb.org/t/p/w500", self.moviesArray[indexPath.row][@"poster_path"]];
+
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    [cell.imageMovieView setImageWithURL:url];
+    cell.movieSynopsisLabel.text = self.moviesArray[indexPath.row][@"overview"];
+    
     return  cell;
 }
 
