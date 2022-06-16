@@ -16,13 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="launch_image" translatesAutoresizingMaskIntoConstraints="NO" id="C7W-HT-bpu">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" misplaced="YES" image="launch_image" translatesAutoresizingMaskIntoConstraints="NO" id="C7W-HT-bpu">
                                 <rect key="frame" x="100" y="347" width="214" height="202"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Flix" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zww-h8-61x">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Flix" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zww-h8-61x">
                                 <rect key="frame" x="184" y="557" width="47" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -30,6 +28,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="C7W-HT-bpu" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="1yL-IU-n7T"/>
+                            <constraint firstItem="zww-h8-61x" firstAttribute="firstBaseline" secondItem="C7W-HT-bpu" secondAttribute="baseline" constant="42.5" symbolType="layoutAnchor" id="8Vz-Jh-iZI"/>
+                            <constraint firstItem="C7W-HT-bpu" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="GOD-cF-3JB"/>
+                            <constraint firstItem="zww-h8-61x" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="M9R-K7-mQN"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>

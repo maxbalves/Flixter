@@ -1,24 +1,23 @@
 //
-//  MovieViewController.m
+//  GridViewController.m
 //  Flixter
 //
-//  Created by Max Bagatini Alves on 6/15/22.
+//  Created by Max Bagatini Alves on 6/16/22.
 //
 
-#import "MovieViewController.h"
-#import "movieViewCell.h"
-#import "UIImageView+AFNetworking.h"
-#import "DetailsViewController.h"
 #import "GridViewController.h"
+#import "CollectionViewCell.h"
+#import "UIImageView+AFNetworking.h"
+#import "MovieViewController.h"
 
 
-@interface MovieViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@interface GridViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *moviesArray;
 
 @end
 
-@implementation MovieViewController
+@implementation GridViewController
 
 - (void)beginRefresh:(UIRefreshControl *)refreshControl {
         [refreshControl beginRefreshing];
@@ -54,7 +53,7 @@
                        NSLog(@"%@", self.moviesArray[i][@"title"]);
                    // TODO: Store the movies in a property to use elsewhere
                    // TODO: Reload your table view data
-                   [self.tableView reloadData];
+                   [self.collectionView reloadData];
                    
                    // TODO: Remove refresh
                    [refreshControl endRefreshing];
@@ -68,45 +67,38 @@
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
+    self.collectionView.dataSource = self;
     
     [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView insertSubview:refreshControl atIndex:0];
+    [self.collectionView insertSubview:refreshControl atIndex:0];
     
     [self beginRefresh:(UIRefreshControl *)refreshControl];
 
 }
 
-- (movieViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    movieViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"movieViewCell" forIndexPath:indexPath];
-    NSString *urlString = [NSString stringWithFormat:@"%@%@", @"https://image.tmdb.org/t/p/w500", self.moviesArray[indexPath.row][@"poster_path"]];
-
+- (CollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionViewCell" forIndexPath:indexPath];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", @"https://image.tmdb.org/t/p/w500", self.moviesArray[indexPath.item][@"poster_path"]];
     NSURL *url = [NSURL URLWithString:urlString];
     
-    [cell.imageMovieView setImageWithURL:url];
-    cell.movieSynopsisLabel.text = self.moviesArray[indexPath.row][@"overview"];
-    cell.movieTitleLabel.text = self.moviesArray[indexPath.row][@"title"];
-    
-    return  cell;
+    [cell.movieImage setImageWithURL:url];
+    return cell;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.moviesArray.count;
 }
 
-// #pragma mark - Navigation
+
+
+/*
+#pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(movieViewCell *)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-        
-    NSDictionary *dataToPass = self.moviesArray[[self.tableView indexPathForCell:sender].row];
-    DetailsViewController *detailVC = [segue destinationViewController];
-    detailVC.detailDict = dataToPass;
 }
-
+*/
 
 @end
