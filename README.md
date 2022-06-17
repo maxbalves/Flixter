@@ -47,7 +47,9 @@ GIF created with [Kap](https://getkap.co/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Describe any challenges encountered while building the app:
+It was challenging at first to understand Objective-C and how all the components work together.
+However, by completing the previous labs and with the help of the TAs and interns, I was able to overcome those obstacles.
 
 ## Credits
 
