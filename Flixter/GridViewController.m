@@ -99,7 +99,9 @@
     
     if (searchText.length != 0) {
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
-            return [evaluatedObject[@"title"] containsString:searchText];
+            NSString *lowercaseTitle = evaluatedObject[@"title"];
+            lowercaseTitle = lowercaseTitle.lowercaseString;
+            return [lowercaseTitle containsString:searchText.lowercaseString];
         }];
         self.filteredMoviesArray = [self.moviesArray filteredArrayUsingPredicate:predicate];
         
