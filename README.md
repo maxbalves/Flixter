@@ -41,7 +41,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='blob/main/FlixterDemo.gif' title='Video Walkthrough' width='250' alt='Video Walkthrough' />
+<img src='https://github.com/maxbalves/Flixter/blob/main/FlixterDemo.gif' title='Video Walkthrough' width='250' alt='Video Walkthrough' />
 
 GIF created with [Kap](https://getkap.co/).
 
