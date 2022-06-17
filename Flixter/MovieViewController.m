@@ -37,8 +37,7 @@
                                                       message:@"The internet connection appears to be offline."
                                                       preferredStyle:UIAlertControllerStyleAlert];
                         
-                       UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault
-                                                                             handler:^(UIAlertAction * action) {[self beginRefresh:refreshControl];}];
+                       UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {[self beginRefresh:refreshControl];}];
                         
                        [alert addAction:defaultAction];
                        [self presentViewController:alert animated:YES completion:nil];
@@ -102,7 +101,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(movieViewCell *)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-        
     NSDictionary *dataToPass = self.moviesArray[[self.tableView indexPathForCell:sender].row];
     DetailsViewController *detailVC = [segue destinationViewController];
     detailVC.detailDict = dataToPass;

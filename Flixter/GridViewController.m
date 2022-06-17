@@ -9,11 +9,14 @@
 #import "CollectionViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "MovieViewController.h"
+#import "DetailsViewController.h"
 
 
-@interface GridViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface GridViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *moviesArray;
+@property (nonatomic, strong) NSArray *filteredMoviesArray;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
@@ -49,6 +52,7 @@
                    
                    // TODO: Get the array of movies
                    self.moviesArray = dataDictionary[@"results"];
+                   self.filteredMoviesArray = self.moviesArray;
                    for (int i = 0; i < self.moviesArray.count; i++)
                        NSLog(@"%@", self.moviesArray[i][@"title"]);
                    // TODO: Store the movies in a property to use elsewhere
@@ -65,6 +69,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.searchBar.delegate = self;
+    
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     
     self.collectionView.dataSource = self;
@@ -78,7 +84,7 @@
 
 - (CollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionViewCell" forIndexPath:indexPath];
-    NSString *urlString = [NSString stringWithFormat:@"%@%@", @"https://image.tmdb.org/t/p/w500", self.moviesArray[indexPath.item][@"poster_path"]];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", @"https://image.tmdb.org/t/p/w500", self.filteredMoviesArray[indexPath.item][@"poster_path"]];
     NSURL *url = [NSURL URLWithString:urlString];
     
     [cell.movieImage setImageWithURL:url];
@@ -86,19 +92,53 @@
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.moviesArray.count;
+    return self.filteredMoviesArray.count;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    if (searchText.length != 0) {
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
+            return [evaluatedObject[@"title"] containsString:searchText];
+        }];
+        self.filteredMoviesArray = [self.moviesArray filteredArrayUsingPredicate:predicate];
+        
+        NSLog(@"%@", self.filteredMoviesArray);
+        
+    }
+    else {
+        self.filteredMoviesArray = self.moviesArray;
+    }
+    
+    [self.collectionView reloadData];
+ 
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    self.searchBar.showsCancelButton = YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    self.searchBar.showsCancelButton = NO;
+    self.searchBar.text = @"";
+    [self.searchBar resignFirstResponder];
+    self.filteredMoviesArray = self.moviesArray;
+    [self.collectionView reloadData];
 }
 
 
 
-/*
-#pragma mark - Navigation
+
+//#pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    NSDictionary *dataToPass = self.filteredMoviesArray[[self.collectionView indexPathForCell:sender].item];
+    DetailsViewController *detailVC = [segue destinationViewController];
+    detailVC.detailDict = dataToPass;
 }
-*/
+
 
 @end

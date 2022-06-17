@@ -13,6 +13,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *movieImage;
 @property (strong, nonatomic) IBOutlet UILabel *movieTitleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *movieOverviewLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *transparentMovieImage;
 
 @end
 
@@ -26,6 +27,7 @@
     NSString *urlString = [NSString stringWithFormat:@"%@%@", @"https://image.tmdb.org/t/p/w500", self.detailDict[@"poster_path"]];
     NSURL *url = [NSURL URLWithString:urlString];
     [self.movieImage setImageWithURL:url];
+    [self.transparentMovieImage setImageWithURL:url];
 }
 
 /*
