@@ -88,6 +88,7 @@
     NSURL *url = [NSURL URLWithString:urlString];
     
     [cell.movieImage setImageWithURL:url];
+    
     return cell;
 }
 
