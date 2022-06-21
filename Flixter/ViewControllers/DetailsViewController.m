@@ -21,13 +21,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.movieTitleLabel.text = self.detailDict[@"title"];
-    self.movieOverviewLabel.text = self.detailDict[@"overview"];
-    
-    NSString *urlString = [NSString stringWithFormat:@"%@%@", @"https://image.tmdb.org/t/p/w500", self.detailDict[@"poster_path"]];
-    NSURL *url = [NSURL URLWithString:urlString];
-    [self.movieImage setImageWithURL:url];
-    [self.transparentMovieImage setImageWithURL:url];
+    self.movieTitleLabel.text = self.movie.title;
+    self.movieOverviewLabel.text = self.movie.overview;
+    [self.movieImage setImageWithURL:self.movie.posterUrl];
+    [self.transparentMovieImage setImageWithURL:self.movie.posterUrl];
 }
 
 
@@ -37,9 +34,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    NSDictionary *dataToPass = self.detailDict;
-    TrailerViewController *detailVC = [segue destinationViewController];
-    detailVC.movieDict = dataToPass;
+    Movie *dataToPass = self.movie;
+    TrailerViewController *trailerVC = [segue destinationViewController];
+    trailerVC.movie = dataToPass;
 }
 
 

@@ -140,7 +140,8 @@
                                     <constraint firstItem="NSV-b1-eb3" firstAttribute="leading" secondItem="Xgp-19-th9" secondAttribute="leading" id="Wsy-Lu-AM7"/>
                                     <constraint firstItem="NSV-b1-eb3" firstAttribute="top" secondItem="Xgp-19-th9" secondAttribute="top" id="Zjk-qr-1Gs"/>
                                     <constraint firstItem="hdv-np-xlb" firstAttribute="centerY" secondItem="NSV-b1-eb3" secondAttribute="bottom" id="g4x-CF-8nq"/>
-                                    <constraint firstItem="Xgp-19-th9" firstAttribute="trailing" secondItem="6wE-AR-Cyh" secondAttribute="trailing" constant="-418" id="k1O-Ad-ZwU"/>
+                                    <constraint firstItem="Xgp-19-th9" firstAttribute="trailing" secondItem="6wE-AR-Cyh" secondAttribute="trailing" constant="-418" id="jzC-Oj-Eyj"/>
+                                    <constraint firstItem="NSV-b1-eb3" firstAttribute="trailing" secondItem="6wE-AR-Cyh" secondAttribute="trailing" constant="10" id="k1O-Ad-ZwU"/>
                                     <constraint firstItem="Xgp-19-th9" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Byf-eV-YP7" secondAttribute="bottom" constant="-828" id="nKs-oq-umL"/>
                                     <constraint firstItem="Byf-eV-YP7" firstAttribute="leading" secondItem="Xgp-19-th9" secondAttribute="leading" constant="8" id="x2f-aF-dDb"/>
                                 </constraints>

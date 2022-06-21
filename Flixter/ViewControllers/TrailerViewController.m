@@ -20,14 +20,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSString *urlString = @"https://api.themoviedb.org/3/movie/";
-    NSString *movieID = self.movieDict[@"id"];
     NSString *videoAPI = @"/videos?api_key=9017031209ee56001d137e43569ed1cf";
-    urlString = [NSString stringWithFormat:@"%@%@%@", urlString, movieID, videoAPI];
+    urlString = [NSString stringWithFormat:@"%@%@%@", urlString, self.movie.ID, videoAPI];
     NSLog(@"%@", urlString);
     // Convert the url String to a NSURL object.
     NSURL *url = [NSURL URLWithString:urlString];
-    
-    
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
