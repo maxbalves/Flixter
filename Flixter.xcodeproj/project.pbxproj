@@ -150,27 +150,18 @@
 		CD6E4283285A4570004D55FB /* Flixter */ = {
 			isa = PBXGroup;
 			children = (
+				CD990A5D28622376008267EB /* ViewControllers */,
 				CD6E4284285A4570004D55FB /* AppDelegate.h */,
 				CD6E4285285A4570004D55FB /* AppDelegate.m */,
 				CD6E4287285A4570004D55FB /* SceneDelegate.h */,
 				CD6E4288285A4570004D55FB /* SceneDelegate.m */,
 				CD6E428D285A4570004D55FB /* Main.storyboard */,
-				CD254F98285D1D760095B951 /* TrailerViewController.h */,
-				CD254F99285D1D760095B951 /* TrailerViewController.m */,
-				CD254F93285BDBA60095B951 /* CollectionViewCell.h */,
-				CD254F94285BDBA60095B951 /* CollectionViewCell.m */,
-				CD254F90285BDB330095B951 /* GridViewController.h */,
-				CD254F91285BDB330095B951 /* GridViewController.m */,
 				CDBADF41285AA28600085880 /* movieViewCell.h */,
 				CDBADF42285AA28600085880 /* movieViewCell.m */,
-				CDBADEF4285A70A100085880 /* MovieViewController.h */,
-				CDBADEF5285A70A100085880 /* MovieViewController.m */,
 				CD6E4290285A4571004D55FB /* Assets.xcassets */,
 				CD6E4292285A4571004D55FB /* LaunchScreen.storyboard */,
 				CD6E4295285A4571004D55FB /* Info.plist */,
 				CD6E4296285A4571004D55FB /* main.m */,
-				CD254F8D285BC6470095B951 /* DetailsViewController.h */,
-				CD254F8E285BC6470095B951 /* DetailsViewController.m */,
 			);
 			path = Flixter;
 			sourceTree = "<group>";
@@ -190,6 +181,23 @@
 				CD6E42AC285A4571004D55FB /* FlixterUITestsLaunchTests.m */,
 			);
 			path = FlixterUITests;
+			sourceTree = "<group>";
+		};
+		CD990A5D28622376008267EB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CD254F98285D1D760095B951 /* TrailerViewController.h */,
+				CD254F99285D1D760095B951 /* TrailerViewController.m */,
+				CD254F93285BDBA60095B951 /* CollectionViewCell.h */,
+				CD254F94285BDBA60095B951 /* CollectionViewCell.m */,
+				CD254F90285BDB330095B951 /* GridViewController.h */,
+				CD254F91285BDB330095B951 /* GridViewController.m */,
+				CDBADEF4285A70A100085880 /* MovieViewController.h */,
+				CDBADEF5285A70A100085880 /* MovieViewController.m */,
+				CD254F8D285BC6470095B951 /* DetailsViewController.h */,
+				CD254F8E285BC6470095B951 /* DetailsViewController.m */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		F65C855C0124EC22DF4B18D2 /* Pods */ = {
