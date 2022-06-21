@@ -186,8 +186,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQ3-km-mmT">
-                                <rect key="frame" x="20" y="317" width="388" height="209"/>
+                                <rect key="frame" x="20" y="353.66666666666669" width="388" height="209.00000000000006"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="209" id="mKc-Gb-hnC"/>
+                                    <constraint firstAttribute="width" constant="388" id="zDt-Ag-FMQ"/>
+                                </constraints>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
@@ -197,10 +201,8 @@
                         <viewLayoutGuide key="safeArea" id="az0-HP-6Uq"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
                         <constraints>
-                            <constraint firstItem="az0-HP-6Uq" firstAttribute="bottom" secondItem="cQ3-km-mmT" secondAttribute="bottom" constant="346" id="4JX-wi-y69"/>
-                            <constraint firstItem="cQ3-km-mmT" firstAttribute="leading" secondItem="az0-HP-6Uq" secondAttribute="leading" constant="20" id="985-Z2-6TV"/>
-                            <constraint firstItem="cQ3-km-mmT" firstAttribute="top" secondItem="az0-HP-6Uq" secondAttribute="top" constant="273" id="JY4-sc-yRQ"/>
-                            <constraint firstItem="az0-HP-6Uq" firstAttribute="trailing" secondItem="cQ3-km-mmT" secondAttribute="trailing" constant="20" id="vLo-Pd-eEq"/>
+                            <constraint firstItem="cQ3-km-mmT" firstAttribute="centerY" secondItem="az0-HP-6Uq" secondAttribute="centerY" id="ymg-7i-GpY"/>
+                            <constraint firstItem="cQ3-km-mmT" firstAttribute="centerX" secondItem="az0-HP-6Uq" secondAttribute="centerX" id="yqk-to-wVs"/>
                         </constraints>
                     </view>
                     <connections>
@@ -340,7 +342,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hMg-Cr-2Ae"/>
+        <segue reference="hUt-8s-oNr"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="now_playing_tabbar_item" width="21" height="21"/>
